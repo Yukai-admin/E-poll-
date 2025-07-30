@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🎉 Discord 登入</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 400px;
+    margin: 80px auto;
+    text-align: center;
+    background: #7289da;
+    color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+  }
+  button {
+    background-color: #fff;
+    color: #7289da;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.3em;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  button:hover {
+    background-color: #5b6eae;
+    color: #fff;
+  }
+  .emoji {
+    font-size: 1.4em;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+  <h1>🎮 歡迎使用 <span class="emoji">🛡️</span>Discord 登入</h1>
+  <button id="login-btn">🔑 立即登入 Discord</button>
+
+  <script>
+    const clientId = '1399942836383781025'; // 你的 Discord 應用 ID
+    const redirectUri = encodeURIComponent(window.location.origin + '/vote.html');
+    const scope = encodeURIComponent('identify');
+    const responseType = 'token';
+    const oauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
+
+    document.getElementById('login-btn').addEventListener('click', () => {
+      window.location.href = oauthUrl;
+    });
+  </script>
+</body>
+</html>
